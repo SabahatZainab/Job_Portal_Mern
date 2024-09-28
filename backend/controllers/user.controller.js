@@ -1,4 +1,4 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -116,3 +116,64 @@ export const Logout = async (req,res) =>{
 }
 
 //Update Profile
+export const updateProfile = async(req,res)=>{
+    try{
+        const {fullname, email, phoneNumber, bio, skills} = req.body;
+        const file = req.file;
+
+        if(!fullname || !email || !phoneNumber || !bio || !skills){
+            return res.status(400).json({
+                message: "Something is missing",
+                success: false,
+            });
+        };
+
+        //cloudinary code here
+
+
+        //skills comes in String format to convert it in array
+        const skillsArray = skills.split(",");
+        const userId = req.id; //middleware authentication
+        let user = await User.findById(userId);
+
+        if(!user){
+            return res.status(400).json({
+                message: "User not found.",
+                status: false,
+            });
+        }
+
+        //Updating User Data
+
+        user.fullname = fullname,
+        user.email = email,
+        user.phoneNumber = phoneNumber,
+        user.profile.bio = bio,
+        user.profile.skills = skillsArray
+
+        //resume code here
+
+        await user.save();
+
+        //updating user data
+
+        user = {
+            _id: user._id,
+            fullname: user.fullname,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            role: user.role,
+            profile: user.profile
+        }
+
+        //return data
+
+        return res.status(200).json({
+            message: "Profile update successfully.",
+            user,
+            success: true
+        });
+    }catch(error){
+        console.log(error) 
+    }
+}
