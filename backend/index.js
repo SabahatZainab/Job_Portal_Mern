@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
+import companyRoute from "./routes/company.route.js";
 
 dotenv.config({});
 
@@ -29,13 +30,26 @@ app.use(cors(corsOptions));
 const PORT = process.env.PORT || 8080;
 
 //API's
+
+//user route
 app.use("/api/v1/user", userRoute);
+//company route
+app.use("/api/v1/company",companyRoute);
+
 
 //user api's
 //http://localhost:7000/api/v1/user/register
 //http://localhost:7000/api/v1/user/login
 //http://localhost:7000/api/v1/user/logout
 //http://localhost:7000/api/v1/user/profile/update
+
+//company api's
+//http://localhost:7000/api/v1/company/register
+//http://localhost:7000/api/v1/company/get
+//http://localhost:7000/api/v1/company/get/id
+//http://localhost:7000/api/v1/company/update/id
+
+
 
 
 app.listen(PORT, ()=>{
