@@ -33,6 +33,9 @@ app.use("/api/v1/user", userRoute);
 
 //user api's
 //http://localhost:7000/api/v1/user/register
+//http://localhost:7000/api/v1/user/login
+//http://localhost:7000/api/v1/user/logout
+//http://localhost:7000/api/v1/user/profile/update
 
 
 app.listen(PORT, ()=>{
