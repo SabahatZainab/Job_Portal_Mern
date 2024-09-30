@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
+import jobRoute from "./routes/job.route.js";
 
 dotenv.config({});
 
@@ -35,6 +36,8 @@ const PORT = process.env.PORT || 8080;
 app.use("/api/v1/user", userRoute);
 //company route
 app.use("/api/v1/company",companyRoute);
+//job route
+app.use("/api/v1/job",jobRoute);
 
 
 //user api's
@@ -48,6 +51,12 @@ app.use("/api/v1/company",companyRoute);
 //http://localhost:7000/api/v1/company/get
 //http://localhost:7000/api/v1/company/get/id
 //http://localhost:7000/api/v1/company/update/id
+
+//job api's
+//http://localhost:7000/api/v1/job/post
+//http://localhost:7000/api/v1/job/get
+//http://localhost:7000/api/v1/job/getadminsjobs
+//http://localhost:7000/api/v1/job/get/id
 
 
 
