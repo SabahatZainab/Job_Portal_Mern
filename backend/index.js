@@ -6,6 +6,7 @@ import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
+import applicationRoute from "./routes/application.route.js";
 
 dotenv.config({});
 
@@ -38,6 +39,8 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company",companyRoute);
 //job route
 app.use("/api/v1/job",jobRoute);
+//application route
+app.use("/api/v1/application",applicationRoute);
 
 
 //user api's
@@ -57,6 +60,12 @@ app.use("/api/v1/job",jobRoute);
 //http://localhost:7000/api/v1/job/get
 //http://localhost:7000/api/v1/job/getadminsjobs
 //http://localhost:7000/api/v1/job/get/id
+
+//application api's
+//http://localhost:7000/api/v1/application/apply/id
+//http://localhost:7000/api/v1/application/get
+//http://localhost:7000/api/v1/application/id/applicants
+//http://localhost:7000/api/v1/application/status/id/update
 
 
 
