@@ -67,7 +67,7 @@ app.use("/api/v1/application",applicationRoute);
 //http://localhost:7000/api/v1/application/id/applicants
 //http://localhost:7000/api/v1/application/status/id/update
 
-
+//backend completed except-logos cloudinary code
 
 
 app.listen(PORT, ()=>{
